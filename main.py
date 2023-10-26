@@ -16,8 +16,17 @@ def encoder(password):
     
     return encoded_password
 
-def decoder(encoded_password):
-    pass  # This function is left intentionally blank
+def decode(password):
+    # Check if the password is valid
+    if not (password.isdigit() and len(password) == 8):
+        return "Invalid password. Please enter an 8-digit password containing only integers."
+
+    # after is the decoded string
+    after = ''
+    for digit in password:
+        # subtract 3 to digit and take mod 10
+        after += str((int(digit) - 3) % 10)
+    return after
 
 def main():
     while True:
